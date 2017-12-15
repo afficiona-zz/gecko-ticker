@@ -1,4 +1,4 @@
-# Gecko Ticker (A Sample Stock updates app)
+# Gecko Ticker (A sample stock updates app)
 
 This project is a sample implementation of WebSocket on client and server side. It uses React and Redux to show and handle DOM changes from the stock updates.
 
