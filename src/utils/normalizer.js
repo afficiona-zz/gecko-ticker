@@ -11,6 +11,7 @@ export const normalizeTickerData = function(updatedData, oldData) {
   let normalizedData = oldData.toJSON();
 
   updatedData.map(([stockName, value]) => {
+    value = parseInt(value);
     const oldValue = oldData.getIn([stockName, 'value']);
     if (!normalizedData[stockName]) {
       normalizedData[stockName] = {
@@ -20,7 +21,7 @@ export const normalizeTickerData = function(updatedData, oldData) {
       normalizedData[stockName].value = value.toFixed(2);
     }
     if (oldValue !== value) {
-      normalizedData[stockName].hasIncreased = oldValue ? parseInt(value) > parseInt(oldValue) : undefined;
+      normalizedData[stockName].hasIncreased = oldValue ? value > parseInt(oldValue) : undefined;
       normalizedData[stockName].lastUpdatedAt = moment(normalizedData[stockName].updatedAt).format('hh:mm:ss');
       normalizedData[stockName].updatedAt = new Date();
     }

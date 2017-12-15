@@ -26,6 +26,16 @@ body {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  &:before {
+    content: '';
+    background: url('./../assets/images/pattern.png') no-repeat;
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    bottom: 0;
+    opacity: 0.3;
+    animation: 10s linear 0s normal none infinite running bg-slide;
+  }
 }
 
 .main-wrapper {
@@ -69,18 +79,17 @@ body {
     }
     &-header {
       height: 30px;
-      box-shadow: 0 3px 5px -2px rgba(0,0,0,0.5);
       border-radius: 3px 3px 0 0;
       display: flex;
       justify-content: center;
       padding-top: $base-px-value;
-      background: $brand-primary;
+      background: $brand-secondary;
     }
     &-body {
       height: 403px;
       border-radius: 0 0 3px 3px;
       padding: $base-px-value;
-      background: $brand-primary;
+      background: $brand-secondary;
       .stats-box {
         .each {
           padding: $base-px-value / 2;
@@ -130,5 +139,28 @@ body {
         }
       }
     }
+  }
+}
+
+//animations
+@keyframes bg-slide {
+  0% {
+    background-position: right bottom;
+  }
+  97% {
+    opacity: 0.3;
+  }
+  98% {
+    opacity: 0;
+    background-position: left bottom;
+  }
+  99% {
+    background-position: right bottom;
+  }
+  99.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.3;
   }
 }
