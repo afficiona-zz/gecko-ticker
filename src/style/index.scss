@@ -59,7 +59,7 @@ body {
     &-wrapper {
       background: url('./../assets/images/iphone-mask.png') no-repeat;
       background-size: cover;
-      padding: 70px 17px 0;
+      padding: 70px 18px 0 16px;
       width: 280px;
       height: 570px;
       display: flex;
@@ -68,31 +68,43 @@ body {
       z-index: 1;
     }
     &-header {
-      height: 40px;
+      height: 30px;
       box-shadow: 0 3px 5px -2px rgba(0,0,0,0.5);
+      border-radius: 3px 3px 0 0;
       display: flex;
       justify-content: center;
-      padding-top: $base-px-value * 2;
+      padding-top: $base-px-value;
       background: $brand-primary;
     }
     &-body {
-      height: 393px;
+      height: 403px;
+      border-radius: 0 0 3px 3px;
       padding: $base-px-value;
       background: $brand-primary;
       .stats-box {
         .each {
-          background: $each-stats-bg;
           padding: $base-px-value / 2;
-          margin-bottom: $base-px-value;
           color: #e3e4e5;
           display: flex;
           justify-content: space-between;
           height: 30px;
           align-items: center;
+          &:nth-of-type(even) {
+            background: $each-stats-bg;
+          }
           .label {
+            width: 50px;
             font-size: 12px;
+            text-transform: uppercase;
+          }
+          .time {
+            width: 50px;
+            font-size: 11px;
+            text-align: right;
           }
           .value {
+            width: 70px;
+            text-align: right;
             &:after {
               content: '\F764';
               font-family: 'Material Design Icons';

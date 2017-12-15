@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 /**
  * Ticker data normalizer. We normalize the data from the original form of [[name, value]...]
  * to a hashMap of all the stock names with their corresponding data values.
@@ -6,15 +8,21 @@
  * @returns {{}}
  */
 export const normalizeTickerData = function(updatedData, oldData) {
-  let normalizedData = {};
+  let normalizedData = oldData.toJSON();
 
   updatedData.map(([stockName, value]) => {
     const oldValue = oldData.getIn([stockName, 'value']);
-    normalizedData[stockName] = {
-      value: value.toFixed(2)
-    };
-    if (oldValue) {
-      normalizedData[stockName].hasIncreased = parseInt(value) > parseInt(oldValue);
+    if (!normalizedData[stockName]) {
+      normalizedData[stockName] = {
+        value: value.toFixed(2)
+      };
+    } else {
+      normalizedData[stockName].value = value.toFixed(2);
+    }
+    if (oldValue !== value) {
+      normalizedData[stockName].hasIncreased = oldValue ? parseInt(value) > parseInt(oldValue) : undefined;
+      normalizedData[stockName].lastUpdatedAt = moment(normalizedData[stockName].updatedAt).format('hh:mm:ss');
+      normalizedData[stockName].updatedAt = new Date();
     }
   });
   

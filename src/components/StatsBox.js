@@ -25,6 +25,7 @@ class StatsBox extends Component {
               <div className={rowClasses}>
                 <div className="label">{name}</div>
                 <div className="value">{stocksData[name].value}</div>
+                <div className="time">{stocksData[name].lastUpdatedAt}</div>
               </div>
             );
           });
