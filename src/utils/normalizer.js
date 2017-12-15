@@ -11,8 +11,10 @@ export const normalizeTickerData = function(updatedData, oldData) {
   let normalizedData = oldData.toJSON();
 
   updatedData.map(([stockName, value]) => {
-    value = parseInt(value);
     const oldValue = oldData.getIn([stockName, 'value']);
+    value = parseInt(value);
+
+    //Creating a hash against the stock name, if not present in the store schema
     if (!normalizedData[stockName]) {
       normalizedData[stockName] = {
         value: value.toFixed(2)
