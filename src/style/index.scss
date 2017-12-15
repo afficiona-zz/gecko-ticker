@@ -1,0 +1,122 @@
+@import "variables";
+
+@import "./../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "./../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "./../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid";
+@import "./../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/type";
+@import "./../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "./../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
+
+@import "material-fonts";
+@import "loaders";
+
+body {
+  margin: 0;
+  position: relative;
+}
+
+.app {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: $body-bg;
+  background-size: cover;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.main-wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  max-width: $container-md;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  padding: $base-px-value * 2;
+  .hero {
+    color: $text-color;
+    max-width: 500px;
+    &-title {
+      line-height: 1.4;
+      font-weight: 200;
+      margin: 0;
+      font-size: $font-size-h1;
+    }
+    &-subtitle {
+      margin-top: 20px;
+      line-height: 1.8;
+      display: block;
+      color: $text-color;
+      font-size: $font-size-h4;
+    }
+  }
+  .content {
+    &-wrapper {
+      background: url('./../assets/images/iphone-mask.png') no-repeat;
+      background-size: cover;
+      padding: 70px 17px 0;
+      width: 280px;
+      height: 570px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+    &-header {
+      height: 40px;
+      box-shadow: 0 3px 5px -2px rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      padding-top: $base-px-value * 2;
+      background: $brand-primary;
+    }
+    &-body {
+      height: 393px;
+      padding: $base-px-value;
+      background: $brand-primary;
+      .stats-box {
+        .each {
+          background: $each-stats-bg;
+          padding: $base-px-value / 2;
+          margin-bottom: $base-px-value;
+          color: #e3e4e5;
+          display: flex;
+          justify-content: space-between;
+          height: 30px;
+          align-items: center;
+          .label {
+            font-size: 12px;
+          }
+          .value {
+            &:after {
+              content: '\F764';
+              font-family: 'Material Design Icons';
+              margin-left: 5px;
+            }
+          }
+          &__success {
+            .value {
+              &:after {
+                content: '\F143';
+              }
+              color: $brand-success;
+            }
+          }
+          &__danger {
+            .value {
+              &:after {
+                content: '\F140';
+              }
+              color: $brand-danger;
+            }
+          }
+        }
+      }
+    }
+  }
+}
